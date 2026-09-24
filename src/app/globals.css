@@ -1,0 +1,1264 @@
+/* ==========================================
+   1. GLOBAL VARIABLES & BASE STYLES
+   ========================================== */
+:root {
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --accent-color: #f97316;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+
+  --badge-green-bg: #dcfce7;
+  --badge-green-text: #15803d;
+  --badge-red-bg: #fee2e2;
+  --badge-red-text: #b91c1c;
+
+  --pink-bg: #fff0f6;
+  --pink-border: #ffadd2;
+  --pink-text: #eb2f96;
+  --pink-hover: #ffd6e7;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-main);
+  background-image:
+    radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(249, 115, 22, 0.05) 0px, transparent 50%);
+  background-attachment: fixed;
+  color: var(--text-dark);
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  min-height: 100vh;
+}
+
+/* Layout Containers */
+.container,
+.band-container,
+.course-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 20px 40px;
+}
+
+.page-title,
+.band-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
+}
+
+/* ==========================================
+   2. NAVBAR STYLE
+   ========================================== */
+.siteHeader {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+.navbar {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.navList {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 20px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.navLink:hover {
+  color: #ffffff;
+  background-color: var(--primary-color);
+}
+
+/* ==========================================
+   3. HOME PAGE
+   ========================================== */
+.hero-section {
+  margin-bottom: 32px;
+}
+
+.card-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease;
+}
+
+.card-section h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: var(--text-dark);
+}
+
+.card-section p {
+  margin: 8px 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.tech-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.tech-tag {
+  background: #eff6ff;
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 6px 14px;
+  border-radius: 10px;
+  border: 1px solid #bfdbfe;
+}
+
+/* ==========================================
+   4. COURSES PAGE
+   ========================================== */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.course-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+.course-card h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.course-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.status-badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.status-badge.open {
+  background-color: var(--badge-green-bg);
+  color: var(--badge-green-text);
+}
+
+.status-badge.closed {
+  background-color: var(--badge-red-bg);
+  color: var(--badge-red-text);
+}
+
+/* ==========================================
+   5. BANDS PAGE & TOOLBAR
+   ========================================== */
+.band-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 240px;
+  padding: 10px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* ปุ่มล้างสถานะทั้งหมด */
+.btn-reset-all {
+  padding: 10px 18px;
+  background-color: #ffffff;
+  color: #ef4444;
+  border: 1px solid #fca5a5;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-reset-all:hover {
+  background-color: #fef2f2;
+  border-color: #ef4444;
+  transform: translateY(-1px);
+}
+
+/* ส่วนแสดงสถิติ Badges ใน Toolbar */
+.stats-container,
+.stats-badges-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.follow-counter-badge {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.follow-counter-badge span {
+  color: var(--primary-color);
+  font-weight: 800;
+}
+
+.like-counter-badge {
+  background: var(--pink-bg);
+  border: 1px solid var(--pink-border);
+  color: var(--pink-text);
+  padding: 8px 16px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.like-counter-badge span {
+  font-weight: 800;
+}
+
+/* ==========================================
+   6. BAND CARDS & ACTION BUTTONS
+   ========================================== */
+.band-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+  gap: 28px;
+}
+
+.band-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease;
+}
+
+.band-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(37, 99, 235, 0.08);
+}
+
+.band-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.band-cover-wrapper {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.band-cover-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.classic-vinyl-disc {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #111 0%, #222 35%, #000 65%, #111 100%);
+  border: 2px solid #333;
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.classic-vinyl-disc::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: #ef4444;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+}
+
+.band-title-area {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.band-title-area h2 {
+  margin: 0 0 6px 0;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.band-meta {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 500;
+}
+/* จัดการตำแหน่งและการจัดวางใน Toolbar */
+.band-toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+/* ปุ่มล้างสถานะทั้งหมด */
+.btn-reset-all {
+  padding: 10px 18px;
+  background-color: #ffffff;
+  color: #ef4444;
+  border: 1px solid #fca5a5;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-reset-all:hover {
+  background-color: #fef2f2;
+  border-color: #ef4444;
+  transform: translateY(-1px);
+}
+.btn-follow.following {
+  background-color: #ffeccc;
+  color: #d46b08;
+}
+
+.btn-follow.following:hover {
+  background-color: #ffccc7;
+  color: #cf1322;
+}
+
+.btn-follow.following:hover .btn-text {
+  display: none;
+}
+
+.btn-follow.following:hover::after {
+  content: "เลิกติดตาม";
+}
+
+/* คอนเทนเนอร์แสดงกล่องสถิติต่างๆ */
+.stats-badges-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* Badge แสดงจำนวนไลค์รวม */
+.like-counter-badge {
+  background-color: var(--pink-bg, #fff0f6);
+  border: 1px solid var(--pink-border, #ffadd2);
+  color: var(--pink-text, #eb2f96);
+  padding: 8px 16px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.like-counter-badge span {
+  font-weight: 800;
+}
+
+.band-header:hover .classic-vinyl-disc,
+.band-cover-wrapper:hover .classic-vinyl-disc {
+  transform: translateX(48px) rotate(180deg);
+}
+
+.band-header:hover .band-title-area {
+  transform: translateX(48px);
+}
+
+.member-section-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+
+.member-chip-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.member-chip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  border-radius: 16px;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+  min-width: 0;
+}
+
+.member-chip:hover {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.member-chip-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.member-chip-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.member-chip-name {
+  font-size: 0.925rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.member-chip-role {
+  font-size: 0.75rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.album-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #f1f5f9;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+}
+
+.album-bar-img {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.album-bar-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.album-bar-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.album-bar-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* แถบรวมปุ่ม Action ใต้การ์ด */
+.band-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+  align-items: center;
+}
+
+/* ปุ่มติดตาม */
+.btn-follow {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  min-height: 42px;
+}
+
+.btn-follow:hover {
+  background-color: var(--primary-hover);
+}
+
+/* สถานะกำลังติดตาม + Hover เปลี่ยนเป็นเลิกติดตาม */
+.btn-follow.following {
+  background-color: #fff7ed;
+  color: #c2410c;
+  border-color: #ffedd5;
+}
+
+.btn-follow.following:hover {
+  background-color: var(--badge-red-bg);
+  color: var(--badge-red-text);
+  border-color: #fca5a5;
+}
+
+.btn-follow.following:hover .btn-text {
+  display: none;
+}
+
+.btn-follow.following:hover::after {
+  content: "เลิกติดตาม";
+}
+
+/* กลุ่มปุ่มไลค์ และ ปุ่มยกเลิกไลค์ */
+.like-action-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex: 1;
+}
+
+.btn-like {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: 1px solid var(--pink-border);
+  background-color: var(--pink-bg);
+  color: var(--pink-text);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+}
+
+.btn-like:hover {
+  background-color: var(--pink-hover);
+}
+
+/* ปุ่มยกเลิกไลค์ ✕ */
+.btn-unlike {
+  padding: 10px 14px;
+  background-color: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  min-height: 42px;
+}
+
+.btn-unlike:hover {
+  background-color: #f1f5f9;
+  color: var(--text-dark);
+  border-color: #cbd5e1;
+}
+
+/* ==========================================
+   7. EMPTY STATE & RESPONSIVE
+   ========================================== */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--bg-card);
+  border: 1px dashed var(--border-color);
+  border-radius: 24px;
+  margin-top: 20px;
+}
+
+.empty-state h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin: 0 0 8px 0;
+}
+
+.empty-state p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .band-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .member-chip-list {
+    grid-template-columns: 1fr;
+  }
+
+  .band-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .band-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .stats-container,
+  .stats-badges-container {
+    margin-left: 0;
+    justify-content: space-between;
+  }
+}
+
+/* ==========================================
+   GAME BACKLOG PAGE (MATCHED EXACT CLASS NAMES)
+   ========================================== */
+
+/* Layout & Container */
+.game-explorer-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 20px 40px;
+}
+
+.game-explorer-page-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--text-dark, #0f172a);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+/* Banner สรุปชั่วโมง */
+.game-summary-banner {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 14px;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+}
+
+.game-summary-text {
+  margin: 0;
+  color: #1e40af;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.game-summary-highlight {
+  font-weight: 700;
+}
+
+.game-summary-hours {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #2563eb;
+}
+
+/* 1. ฟอร์มเพิ่ม/แก้ไขเกม (GameForm.tsx) */
+.game-form-container {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.game-form-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 8px 0;
+}
+
+.game-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.game-form-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+.game-form-input,
+.game-form-select {
+  height: 42px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #0f172a;
+  outline: none;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.game-form-input:focus,
+.game-form-select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.game-form-error {
+  color: #dc2626;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 2px 0 0 0;
+}
+
+.game-form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.game-form-submit-btn {
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 10px 24px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.game-form-submit-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.game-form-cancel-btn {
+  background-color: #f1f5f9;
+  color: #475569;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.game-form-cancel-btn:hover {
+  background-color: #e2e8f0;
+}
+
+/* 2. เครื่องมือค้นหาและกรอง (GameExplorer.tsx) */
+.game-filter-panel {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.game-search-box {
+  flex: 1;
+  min-width: 240px;
+}
+
+.game-search-input {
+  width: 100%;
+  height: 42px;
+  padding: 8px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  background: #ffffff;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.game-search-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.game-filter-select {
+  height: 42px;
+  padding: 8px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  background: #ffffff;
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
+}
+
+/* 3. รายการเกม (Game List & Grid) */
+.game-list-section {
+  margin-top: 10px;
+}
+
+.game-list-header {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+.game-list-empty {
+  text-align: center;
+  padding: 40px 20px;
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 16px;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.game-list-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 4. การ์ดเกม (GameCard.tsx) */
+.game-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  gap: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+.game-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.game-card-title-link {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1e40af;
+  text-decoration: none;
+}
+
+.game-card-title-link:hover {
+  text-decoration: underline;
+}
+
+.game-card-meta {
+  font-size: 0.875rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.game-platform,
+.game-estimated-hours {
+  font-weight: 500;
+}
+
+.game-status-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.game-status-dropdown {
+  padding: 4px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0f172a;
+  outline: none;
+  cursor: pointer;
+}
+
+.game-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.game-edit-btn {
+  background-color: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.game-edit-btn:hover {
+  background-color: #dbeafe;
+}
+
+.game-delete-btn {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.game-delete-btn:hover {
+  background-color: #fee2e2;
+}
+
+/* 5. Responsive */
+@media (max-width: 640px) {
+  .game-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .game-card-actions {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-end;
+    padding-top: 10px;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  .game-filter-panel {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* ==========================================
+   POPUP MODAL CONFIRM DELETE (CENTER SCREEN)
+   ========================================== */
+
+/* ฉากหลังสีเทาเบลอเต็มจอ */
+.confirm-modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: rgba(15, 23, 42, 0.6) !important; /* พื้นหลังมืดสลัว */
+  backdrop-filter: blur(4px) !important; /* เอฟเฟกต์เบลอฉากหลัง */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9999 !important; /* ให้อยู่ชั้นบนสุดเสมอ */
+}
+
+/* ตัวกล่องป็อปอัปตรงกลางจอ */
+.confirm-modal-card {
+  background-color: #ffffff !important;
+  padding: 28px 32px !important;
+  border-radius: 16px !important;
+  border: 1px solid #e2e8f0 !important;
+  max-width: 420px !important;
+  width: 90% !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+  text-align: center !important;
+  animation: modalPopup 0.2s ease-out !important;
+}
+
+/* หัวข้อป็อปอัป */
+.confirm-modal-heading {
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+  font-size: 1.3rem !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+}
+
+/* ข้อความเตือน */
+.confirm-modal-message {
+  font-size: 0.95rem !important;
+  color: #475569 !important;
+  margin-bottom: 24px !important;
+  line-height: 1.5 !important;
+}
+
+/* ชื่อเกมที่จะลบ (เน้นสีแดง) */
+.confirm-modal-target-title {
+  font-weight: 700 !important;
+  color: #dc2626 !important;
+}
+
+/* กลุ่มปุ่มกด */
+.confirm-modal-actions {
+  display: flex !important;
+  gap: 12px !important;
+  justify-content: center !important;
+}
+
+/* ปุ่มยกเลิก */
+.confirm-modal-cancel-btn {
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+  border: 1px solid #cbd5e1 !important;
+  padding: 10px 20px !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.confirm-modal-cancel-btn:hover {
+  background-color: #e2e8f0 !important;
+}
+
+/* ปุ่มยืนยันลบ */
+.confirm-modal-delete-btn {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.confirm-modal-delete-btn:hover {
+  background-color: #b91c1c !important;
+}
+
+/* แอนิเมชันเปิดป็อปอัป */
+@keyframes modalPopup {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ==========================================
+   COMPACT GAME FORM (ปรับฟอร์มให้เล็กลง)
+   ========================================== */
+
+/* ปรับคอนเทนเนอร์ฟอร์มให้กระชับขึ้น */
+.game-form-container {
+  padding: 16px 20px !important;
+  margin-bottom: 20px !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important; /* แบ่งเป็น 2 คอลัมน์คู่กัน */
+  gap: 12px 16px !important;
+  align-items: start !important;
+}
+
+/* หัวข้อฟอร์มให้อยู่เต็มความกว้าง */
+.game-form-title {
+  grid-column: span 2 !important;
+  font-size: 1.1rem !important;
+  margin-bottom: 4px !important;
+}
+
+/* ปรับระยะห่างและขนาดของแต่ละช่องกรอก */
+.game-form-field {
+  gap: 4px !important;
+}
+
+.game-form-label {
+  font-size: 0.8rem !important;
+}
+
+.game-form-input,
+.game-form-select {
+  height: 36px !important; /* ลดความสูงของช่องกรอก */
+  padding: 6px 12px !important;
+  font-size: 0.85rem !important;
+  border-radius: 8px !important;
+}
+
+/* ปุ่มกดให้อยู่ล่างสุดเต็มความกว้าง 2 คอลัมน์ */
+.game-form-buttons {
+  grid-column: span 2 !important;
+  margin-top: 4px !important;
+}
+
+.game-form-submit-btn,
+.game-form-cancel-btn {
+  padding: 8px 18px !important;
+  font-size: 0.85rem !important;
+  border-radius: 8px !important;
+}
+
+/* สำหรับหน้าจอมือถือให้ปรับกลับเป็น 1 คอลัมน์ */
+@media (max-width: 640px) {
+  .game-form-container {
+    grid-template-columns: 1fr !important;
+  }
+  .game-form-title,
+  .game-form-buttons {
+    grid-column: span 1 !important;
+  }
+}
